@@ -13,11 +13,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.simulacros.simulacro_1.api.dto.errors.BaseErrorResp;
 import com.simulacros.simulacro_1.api.dto.errors.ErrorsResp;
+import com.simulacros.simulacro_1.util.exceptions.BadRequestException;
+// import com.simulacros.simulacro_1.util.exceptions.NotFoundException;
 
 @RestControllerAdvice
 @ResponseStatus(code = HttpStatus.BAD_REQUEST)
 public class BadRequestController {
-    
+    /* Manejo de errores  400 de tipo que el usuario ingresa incorrectamente algo en el request */
+    /* No me tengo que crear una exception para este error debido a que es una clase interna creada directamente por springboot y esta directamente relacionada con @NotBlank y @NotNull */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public BaseErrorResp handleBadRequest(MethodArgumentNotValidException exception){
         /* Se inicializa la lista de erorres */
@@ -38,6 +41,41 @@ public class BadRequestController {
                 .errors(errors) /* Atributo que tiene el hijo */
                 .build();
     }
+
+    /* Manejo de errores 404 de cuando no se encuentra la entidad solicitada */
+    @ExceptionHandler(BadRequestException.class)
+    public BaseErrorResp handleError(BadRequestException exception){
+        List<Map<String,String>> errors = new ArrayList<>();
+
+        Map<String,String> error = new HashMap<>();
+        
+        error.put("id", exception.getMessage());
+
+        return ErrorsResp.builder()
+                .code(HttpStatus.NOT_FOUND.value()) // 404
+                .status(HttpStatus.NOT_FOUND.name()) // NOT_FOUND
+                .errors(errors) // [ { "field": "mal", "error": "mal"} ]
+                .build();
+
+    }
+
+    /* Otra forma de hacer la 404 desde la librería
+    @ExceptionHandler(NotFoundException.class)
+    public BaseErrorResp handleError(NotFoundException exception){
+        List<Map<String,String>> errors = new ArrayList<>();
+
+        Map<String,String> error = new HashMap<>();
+        
+        error.put("id", exception.getMessage());
+
+        return ErrorsResp.builder()
+                .code(HttpStatus.NOT_FOUND.value()) //400
+                .status(HttpStatus.NOT_FOUND.name()) //BAD_REQUEST
+                .errors(errors) // [ { "field": "mal", "error": "mal"} ]
+                .build();
+
+    } */
+
 }
 
 

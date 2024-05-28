@@ -181,8 +181,10 @@ public class UserService implements IUserService {
     private MessageSenderResp messageSenderEntityToResponse(Message entity) {
         /* Creo una nueva respuesta del usuario al que le envia el mensaje */
         UserBasicResp receiver = new UserBasicResp();
-        /* Se copian las propiedades del destinatario del mensaje original al objeto receiver recién creado. */
-        BeanUtils.copyProperties(entity.getReceiver(), receiver);
+        /* Se copian las propiedades del destinatario del mensaje original al objeto receiver recién creado, además se valida que no sea nulo para que BeanUtils no lance error  */
+        if (entity.getReceiver() != null) {
+            BeanUtils.copyProperties(entity.getReceiver(), receiver);
+        }
 
         /* Se contruye la respuesta del mensaje que envia */
         return MessageSenderResp.builder()
@@ -196,8 +198,10 @@ public class UserService implements IUserService {
     private MessageReceiverResp messageReceiverEntityToResponse(Message entity) {
         /* Creo una nueva respuesta del usuario que le envia el mensaje */
         UserBasicResp sender = new UserBasicResp();
-        /* Se copian las propiedades del remitente del mensaje original al objeto sender recién creado. */
-        BeanUtils.copyProperties(entity.getSender(), sender);
+        /* Se copian las propiedades del remitente del mensaje original al objeto sender recién creado, además se valida que no sea nulo para que BeanUtils no lance error */
+        if (entity.getSender() != null){
+            BeanUtils.copyProperties(entity.getSender(), sender);
+        }
 
         /* Se contruye la respuesta del mensaje que recibe  */
         return MessageReceiverResp.builder()
@@ -220,8 +224,10 @@ public class UserService implements IUserService {
     private SubmissionBasicResp submissionEntityToResponse(Submission entity) {
         /* Creo una nueva respuesta de entrega */
         AssignmentBasicResp assignment = new AssignmentBasicResp();
-        /* Se copian las propiedades de la entrega original al objeto assignment recién creado. */
-        BeanUtils.copyProperties(entity.getAssignment(), assignment);
+        /* Se copian las propiedades de la entrega original al objeto assignment recién creado, además se valida que no sea nulo para que BeanUtils no lance error  */
+        if (entity.getAssignment() != null) {
+            BeanUtils.copyProperties(entity.getAssignment(), assignment);
+        }
 
         /* Se contruye la respuesta de entrega */
         return SubmissionBasicResp.builder()
