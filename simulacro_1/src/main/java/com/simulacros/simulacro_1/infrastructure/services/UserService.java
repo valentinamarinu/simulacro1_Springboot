@@ -60,14 +60,12 @@ public class UserService implements IUserService {
         return this.repository.findAll(pagination).map(this::entityToResponse);
     }
 
-
     /* Obtener información detallada de un usuario por id */
     @Override
     public UserResp get(Long id) {
         /* Devuelvo la respuesta de usuario encontrada por el id */
         return this.entityToResponse(this.find(id));
     }
-
 
     /* Registrar usuario */
     @Override
@@ -85,7 +83,6 @@ public class UserService implements IUserService {
         /* Guardo la nueva entidad usuario en el repositorio */
         return this.entityToResponse(this.repository.save(user));
     }
-
 
     /* Actualizar usuario */
     @Override
@@ -235,7 +232,6 @@ public class UserService implements IUserService {
                 .assignment(assignment)
                 .build();
     }
-
 
     /* Convertir requerimiento de usuario en entidad */
     private User requestToEntity(UserReq request) {

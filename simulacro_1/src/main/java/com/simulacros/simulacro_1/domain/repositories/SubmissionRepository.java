@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.simulacros.simulacro_1.domain.entities.Submission;
 
 @Repository
-public interface SubmissionRespository extends JpaRepository<Submission, Long> {
+public interface SubmissionRepository extends JpaRepository<Submission, Long> {
     
 }
