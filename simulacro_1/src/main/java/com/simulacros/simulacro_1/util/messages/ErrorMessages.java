@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 public class ErrorMessages {    
     /* Exception 404 */
     public static String idNotFound(String entity) {
-    //    return "No hay registros en la entidad "+entity+ " con el id suministrado";
+    // return "No hay registros en la entidad "+entity+ " con el id suministrado";
        final String message = "There are no records in entity %s with the supplied id.";
        return String.format(message, entity);
     }
@@ -20,9 +20,4 @@ public class ErrorMessages {
         final String message = "There are no records in entity %s with the supplied id.";
         return String.format(message, entity);
     } */
-
 }
-
-
-
-

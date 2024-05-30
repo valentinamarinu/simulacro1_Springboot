@@ -6,8 +6,3 @@ import com.simulacros.simulacro_1.api.dto.response.UserResp;
 public interface IUserService extends CrudService<UserReq, UserResp, Long> {
     public final String FIELD_BY_SORT = "full_name";
 }
-
-
-
-
-

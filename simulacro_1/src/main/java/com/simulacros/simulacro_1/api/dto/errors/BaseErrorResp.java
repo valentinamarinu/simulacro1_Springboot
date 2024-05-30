@@ -15,6 +15,3 @@ public class BaseErrorResp implements Serializable {
     private Integer code;
     private String status;
 }
-
-
-

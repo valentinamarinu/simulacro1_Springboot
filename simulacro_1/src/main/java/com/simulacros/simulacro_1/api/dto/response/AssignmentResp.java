@@ -22,9 +22,9 @@ public class AssignmentResp {
 
     private LocalDate due_date;
 
-    /* Relación con tabla "Submission" */
-    private List<SubmissionBasicAssignmentResp> submissions;
-
     /* Relación con tabla "Lesson" */
     private LessonBasicResp lesson;
+
+    /* Relación con tabla "Submission" */
+    private List<SubmissionBasicAssignmentResp> submissions;
 }

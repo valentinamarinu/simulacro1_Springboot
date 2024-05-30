@@ -49,4 +49,3 @@ public class Assignment {
     @JoinColumn(name = "lesson_id", referencedColumnName = "id_lesson")
     private Lesson lesson;
 }
-

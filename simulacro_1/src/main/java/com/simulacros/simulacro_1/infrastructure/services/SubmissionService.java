@@ -6,10 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.simulacros.simulacro_1.api.dto.request.AssignmentReq;
 import com.simulacros.simulacro_1.api.dto.request.SubmissionReq;
 import com.simulacros.simulacro_1.api.dto.response.AssignmentBasicResp;
-import com.simulacros.simulacro_1.api.dto.response.AssignmentResp;
 import com.simulacros.simulacro_1.api.dto.response.LessonBasicResp;
 import com.simulacros.simulacro_1.api.dto.response.SubmissionResp;
 import com.simulacros.simulacro_1.api.dto.response.UserBasicResp;
@@ -82,7 +80,6 @@ public class SubmissionService implements ISubmissionService {
         submissionUpdate.setAssignment(submission.getAssignment());
 
         return this.entityToResponse(this.repository.save(submissionUpdate));
-
     }
 
     @Override
@@ -92,7 +89,6 @@ public class SubmissionService implements ISubmissionService {
         this.repository.delete(submission);
     }
     
-
     private SubmissionResp entityToResponse(Submission entity) {
         UserBasicResp user = UserBasicResp.builder()
                             .id_user(entity.getUser().getId_user())

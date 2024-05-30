@@ -9,5 +9,3 @@ import com.simulacros.simulacro_1.domain.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     
 }
-
-

@@ -18,6 +18,9 @@ public class CourseResp {
 
     private String description;
 
+    /* Relación con la tabla "User" */
+    private UserBasicResp user;
+    
     /* Relación con tabla "Lesson" */
     private List<LessonBasicResp> lessons;
     

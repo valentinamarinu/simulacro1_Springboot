@@ -14,7 +14,7 @@ public class MessageReq {
     private String message_content;
     
     @NotNull(message = "User sender id is required.")
-    private Long sendId;
+    private Long id_sender;
 
     @NotNull(message = "User receiver id is required.")
     private Long id_receiver;

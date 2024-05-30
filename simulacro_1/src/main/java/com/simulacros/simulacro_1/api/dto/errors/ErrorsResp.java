@@ -17,8 +17,3 @@ import lombok.experimental.SuperBuilder;
 public class ErrorsResp extends BaseErrorResp {
     private List<Map<String, String>> errors;
 }
-
-
-
-
-

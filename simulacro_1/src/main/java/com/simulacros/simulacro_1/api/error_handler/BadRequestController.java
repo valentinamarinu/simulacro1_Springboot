@@ -56,7 +56,6 @@ public class BadRequestController {
                 .status(HttpStatus.NOT_FOUND.name()) // NOT_FOUND
                 .errors(errors) // [ { "field": "mal", "error": "mal"} ]
                 .build();
-
     }
 
     /* Otra forma de hacer la 404 desde la librería
@@ -75,7 +74,6 @@ public class BadRequestController {
                 .build();
 
     } */
-
 }
 
 
